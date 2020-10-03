@@ -57,6 +57,7 @@ uint64_t multimod(uint64_t a, uint64_t b, uint64_t m)
     {
         x[i]=bit_of(a,i);
         y[i]=bit_of(b,i);
+        mod[i]=bit_of(m,i);
     }
     for(int i = 0;i < 128;i++)
         {
