@@ -1,6 +1,5 @@
 #include <stdint.h>
 
-
 static inline int bit_of(uint64_t x, int i) 
 {
     return (x >> i) & 1;
@@ -50,7 +49,7 @@ static inline short com(short *a,short *b)
 
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) 
 {
-    short int x[64]={0},y[64]={0},cin=0,ans[128]={0},mod[128];
+    short int x[64]={0},y[64]={0},cin=0,ans[128]={0},mod[128]={0};
     int num=0;
     uint64_t ret=0;
     for(int i = 0;i < 64;i++)
