@@ -7,11 +7,11 @@ static inline int bit_of(uint64_t x, int i)
 
 static inline  void right(short * a,int x)
 {
-    for(int i = 0;i < 63;i++)
+    for(int i = 0;i < 128;i++)
     {
         a[i]=a[i+1];
     }
-    a[63]=0;
+    a[127]=0;
 }
 
 static inline void sub(short *a,short *b)
@@ -81,6 +81,7 @@ uint64_t multimod(uint64_t a, uint64_t b, uint64_t m)
     for(int i = num;i >= 0;i--)
     {
         mod[127-num+i]=mod[i];
+        mod[i]=0;
     }
     while(num < 127)
     {
