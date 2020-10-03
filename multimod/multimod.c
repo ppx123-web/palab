@@ -83,7 +83,7 @@ uint64_t multimod(uint64_t a, uint64_t b, uint64_t m)
         mod[127-num+i]=mod[i];
         mod[i]=0;
     }
-    while(num < 127)
+    while(num < 128)
     {
         if(com(ans,mod))
         {
