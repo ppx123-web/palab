@@ -23,8 +23,8 @@ int asm_popcnt(uint64_t x) {
     ".L2:"
     "cmp $64,%[t1];"
     "jl L1;"
-    : [t1] "+r"(i),[t2] "+r"(x), [t3] "+r"(s)
-    : [t1] "+r"(i),[t2] "+r"(x), [t3] "+r"(s)
+    : [t1] "c"(i),[t2] "b"(x), [t3] "a"(s)
+    : [t1] "c"(i),[t2] "b"(x), [t3] "a"(s)
     );
   return s;
 
