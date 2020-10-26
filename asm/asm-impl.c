@@ -3,7 +3,7 @@
 
 int64_t asm_add(int64_t a, int64_t b) {
     asm(
-      "add %%ebx,%%eax;"
+      "add %%rbx,%%rax;"
       : "=a"(a)
       : "a"(a), "b"(b)
   );
@@ -15,16 +15,16 @@ int asm_popcnt(uint64_t x) {
   int s = 0,i = 0;
   asm(
     ".L1:"
-    "shr %[t1],%[t2];"
-    "and $1,%[t2];"
-    "cmp $1,%[t2];"
+    "shr %%ecx,%%rbx;"
+    "and $1,%%rbx;"
+    "cmp $1,%%rbx;"
     "je .L2;"
-    "incl %[t3];"
+    "incl %%eax;"
     ".L2:"
-    "cmp $64,%[t1];"
+    "cmp $64,%%ecx;"
     "jl L1;"
-    : [t1] "c"(i),[t2] "b"(x), [t3] "a"(s)
-    : [t1] "c"(i),[t2] "b"(x), [t3] "a"(s)
+    : "=c"(i),"=b"(x),"=a"(s)
+    : "c"(i),"b"(x),"a"(s)
     );
   return s;
 
