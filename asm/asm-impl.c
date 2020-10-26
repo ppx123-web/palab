@@ -15,7 +15,7 @@ int asm_popcnt(uint64_t x) {
   int s = 0,i = 0;
   asm(
     ".L1:"
-    "shr %%ecx,%%rbx;"
+    "shrl %%ecx,%%rbx;"
     "and $1,%%rbx;"
     "cmp $1,%%rbx;"
     "je .L2;"
