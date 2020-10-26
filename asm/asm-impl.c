@@ -6,18 +6,29 @@ int64_t asm_add(int64_t a, int64_t b) {
       "add %%ebx,%%eax;"
       : "=a"(a)
       : "a"(a), "b"(b)
-      :
   );
   return a;
 
 }
 
 int asm_popcnt(uint64_t x) {
-  int s = 0;
-  for (int i = 0; i < 64; i++) {
-    if ((x >> i) & 1) s++;
-  }
+  int s = 0,int i = 0;
+  asm(
+    ".L1:"
+    "shr %[t1],%[t2];"
+    "and $1,%[t2];"
+    "cmp $1,%[t2];"
+    "je .L2;"
+    "incl %[t3];"
+    ".L2:"
+    "cmp $64,%[t1];"
+    "jl L1;"
+    : [t1] "+r"(i),[t2] "+r"(x), [t3] "+r"(s)
+    : [t1] "+r"(i),[t2] "+r"(x), [t3] "+r"(s)
+    );
   return s;
+
+
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
