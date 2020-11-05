@@ -12,7 +12,7 @@ int64_t asm_add(int64_t a, int64_t b) {
 }
 
 int asm_popcnt(uint64_t x) {
-  int s = 0,i = 0;
+  int s = 0,i = 0,temp =0 ;
     for (int i = 0; i < 64; i++) {
         if ((x >> i) & 1) s++;
     }
@@ -26,7 +26,7 @@ int asm_popcnt(uint64_t x) {
           "cmp $0x40,%3;"
           "jne .loop;"
           :"=r"(s)
-          :"r","r"(x),"r"(s)
+          :"r"(temp),"r"(x),"r"(s)
           :
           );
   return s;
