@@ -18,16 +18,14 @@ int asm_popcnt(uint64_t x) {
     }
   asm(
       ".loop:\n"
-          "movq %2,%1;"
-          "shrl %3,%1;"
-          "andl $0x1,%1;"
-          "addl %1,%0;"
-          "addl $0x1,%3;"
-          "cmpq $0x40,%3;"
+          "mov %%rdi,%%rax;"
+          "shr %%cl,%%rax;"
+          "and $0x1,%%eax;"
+          "add %%eax,%%edx;"
+          "add $0x1,%%ecx;"
+          "c,p $0x40,%%ecx;"
           "jne .loop;"
-          :"=r"(temp),"=a"(s)
-          :"r"(temp),"r"(x),"a"(s)
-          :
+          "mov %%edx,%%eax;"
           );
   return s;
 
