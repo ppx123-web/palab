@@ -27,7 +27,8 @@ int asm_popcnt(uint64_t x) {
           "jne .loop;"
           :"=a"(s)
           :"r"(i),"r"(x),"r"(temp)
-          : "%eax","%ecx","%edx"
+          :
+//          : "%eax","%ecx","%edx"
           );
   return s;
 
