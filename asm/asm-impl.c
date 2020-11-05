@@ -18,7 +18,7 @@ int asm_popcnt(uint64_t x) {
     }
   asm(
       ".loop:\n"
-          "movl %2,%1;"
+          "mov %2,%1;"
           "shr %3,%1;"
           "and $0x1,%1;"
           "add %1,%0;"
