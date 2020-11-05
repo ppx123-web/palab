@@ -26,7 +26,7 @@ int asm_popcnt(uint64_t x) {
           "cmp $0x40,%3;"
           "jne .loop;"
           :"=r"(s)
-          :"=r","r"(x),"r"(s)
+          :"r","r"(x),"r"(s)
           :
           );
   return s;
