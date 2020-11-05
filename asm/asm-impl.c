@@ -17,18 +17,16 @@ int asm_popcnt(uint64_t x) {
         if ((x >> i) & 1) s++;
     }
   asm(
-      ".loop:\n"
+      "s:\n"
           "mov %2,%1;"
           "shr %3,%1;"
           "and $0x1,%1;"
           "add %1,%0;"
-          "add $0x1,%3;"
           "cmp $0x40,%3;"
-          "jne .loop;"
+          "loop s;"
           :"=a"(s)
-          :"r"(i),"r"(x),"r"(temp)
+          :"c"(i),"r"(x),"r"(temp)
           :
-//          : "%eax","%ecx","%edx"
           );
   return s;
 
