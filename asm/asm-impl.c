@@ -3,7 +3,7 @@
 
 int64_t asm_add(int64_t a, int64_t b) {
     asm(
-      "add %%rbx,%%rax;"
+      "addq %%rbx,%%rax;"
       : "=a"(a)
       : "a"(a), "b"(b)
   );
@@ -16,7 +16,7 @@ int asm_popcnt(uint64_t x) {
     for (int i = 0; i < 64; i++) {
         if ((x >> i) & 1) s++;
     }
-  asm(
+  /*asm(
       "s:\n"
         //"movq $0 , %%ecx;"
           "movq %2,%1;"
@@ -29,6 +29,7 @@ int asm_popcnt(uint64_t x) {
           :"c"(i),"r"(x),"r"(temp)
           :
           );
+          */
   return s;
 
 
