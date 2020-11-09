@@ -14,7 +14,9 @@ int main() {
     //assert(asm_popcnt(0x1)==1);
     //assert(asm_popcnt(0x0123456789abcdefULL) == 32);
     asm_memcpy(dst,src,3);
-    assert(dst[0] == src[1]);
+    assert(dst[0] == src[0]);
+    assert(dst[1] == src[1]);
+    assert(dst[2] == src[2]);
     // TODO: add more tests here.
     asm_longjmp(buf, 123);
   } else {
