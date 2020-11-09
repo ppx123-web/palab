@@ -26,7 +26,7 @@ int asm_popcnt(uint64_t x) {
         // "addq $1,%rcx;"
         // "cmpq $0x40,%rcx;"
         //"jneq s;"
-        "movq %rax, %rcx;"
+        "movq %%rax, %%rcx;"
         :"=a"(s)
         :"c"(i),"d"(x)
         :"rcx","rax","rdi","rdx"
