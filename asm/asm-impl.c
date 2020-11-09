@@ -13,7 +13,7 @@ int64_t asm_add(int64_t a, int64_t b) {
 }
 
 int asm_popcnt(uint64_t x) {
-  int s,i;
+  int s=0,i=0;
   asm(
       "movq $0,%rcx;"
       "movq $0,%rax;"
