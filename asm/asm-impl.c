@@ -6,7 +6,7 @@ int64_t asm_add(int64_t a, int64_t b) {
       "addq %%rbx,%%rax;"
       : "=a"(a)
       : "a"(a), "b"(b)
-      : //"rbx","rax"
+      : 
   );
   return a;
 
@@ -18,17 +18,17 @@ int asm_popcnt(uint64_t x) {
       "movq $0,%%rcx;"
       "movq $0,%rax;"
       "movq $0,%rdi;"
-      "1:\n"
+      "L:\n"
         "movq %rdi,%rdx;"
         "shrq %cl,%rdx;"
         "andq $0x1,%rdx;"
         "addq %rdx,%rax;"
         "addq $1,%rcx;"
         "cmp $0x40,%rcx;"
-        "jne 1b;"
+        "jne L;"
         :"=a"(s)
         :"a"(s), "D"(x)
-        :"rcx","rax","rdi","rdx"
+        :
           );
 
   return s;
