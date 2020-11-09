@@ -23,7 +23,7 @@ int asm_popcnt(uint64_t x) {
         "shrq %%cl,%%rdx;"
         "andq $0x1,%%rdx;"
         "addq %%rdx,%%rax;"
-        "addq $1,%rcx;"
+        "addq $1,%%rcx;"
         "cmp $0x40,%%rcx;"
         "jne L;"
         :"=a"(s)
