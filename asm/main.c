@@ -4,7 +4,7 @@
 
 int main() {
   asm_jmp_buf buf;
-  char* src[10]={a,b,c};
+  char* src[10]={"abc"};
   char* dst[10]={0};
   int r = asm_setjmp(buf);
   if (r == 0) {
