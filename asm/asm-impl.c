@@ -29,7 +29,7 @@ int asm_popcnt(uint64_t x) {
 //          :"c"(i),"r"(x),"r"(temp)
 //          :
           );
-          */
+
   return s;
 
 
