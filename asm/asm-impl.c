@@ -16,7 +16,7 @@ int asm_popcnt(uint64_t x) {
   int s=0,i=0;
   asm(
       "movq $0,%rcx;"
-      "movq $0,%rax;"
+      //"movq $0,%rax;"
       "movq $0,%rdi;"
       "s:\n"
         //"movq %rdi,%rdx;"
