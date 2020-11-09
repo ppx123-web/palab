@@ -20,12 +20,12 @@ int asm_popcnt(uint64_t x) {
       "movq $0,%rdi;"
       "s:\n"
         "movq %rdi,%rdx;"
-        "shrq %cl,%rdx;"
-        "andq $0x1,%rdx;"
-        "addq %rdx,%rax;"
-        "addq $1,%rcx;"
-        "cmpq $0x40,%rcx;"
-        "jne s;"
+        // "shrq %cl,%rdx;"
+        // "andq $0x1,%rdx;"
+        // "addq %rdx,%rax;"
+        // "addq $1,%rcx;"
+        // "cmpq $0x40,%rcx;"
+        // "jne s;"
         :"=a"(s)
         :"c"(i),"d"(x)
         :"rcx","rax","rdi","rdx"
