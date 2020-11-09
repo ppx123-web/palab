@@ -29,10 +29,7 @@ int asm_popcnt(uint64_t x) {
         :"a"(s), "D"(x)
         :"rdx"
           );
-
   return s;
-
-
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
