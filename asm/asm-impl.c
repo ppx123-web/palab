@@ -15,20 +15,19 @@ int64_t asm_add(int64_t a, int64_t b) {
 int asm_popcnt(uint64_t x) {
   int s=0,i=0;
   asm(
-      //"movq $0,%rcx;"
-      //"movq $0,%rax;"
-      //"movq $0,%rdi;"
-      //"s:\n"
-        //"movq %rdi,%rdx;"
-        // "shrq %cl,%rdx;"
-        // "andq $0x1,%rdx;"
-        // "addq %rdx,%rax;"
-        // "addq $1,%rcx;"
-        // "cmpq $0x40,%rcx;"
-        //"jneq s;"
-        "movq %%rax, %%rcx;"
+      "movq $0,%rcx;"
+      "movq $0,%rax;"
+      "movq $0,%rdi;"
+      "s:\n"
+        "movq %rdi,%rdx;"
+        "shrq %cl,%rdx;"
+        "andq $0x1,%rdx;"
+        "addq %rdx,%rax;"
+        "addq $1,%rcx;"
+        "cmpq $0x40,%rcx;"
+        "jne s;"
         :"=a"(s)
-        :"c"(i),"d"(x)
+        :d"(x)
         :"rcx","rax","rdi","rdx"
           );
 
