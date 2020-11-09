@@ -16,18 +16,18 @@ int asm_popcnt(uint64_t x) {
     for (int i = 0; i < 64; i++) {
         if ((x >> i) & 1) s++;
     }
-  /*asm(
+  asm(
       "s:\n"
-        //"movq $0 , %%ecx;"
-          "movq %2,%1;"
-          "shrq %3,%1;"
-          "andq $0x1,%1;"
-          "addq %1,%0;"
-          "cmpq $0x40,%3;"
-          "loop s;"
-          :"=a"(s)
-          :"c"(i),"r"(x),"r"(temp)
-          :
+        "movq $1 , %%rcx;"
+//          "movq %2,%1;"
+//          "shrq %3,%1;"
+//          "andq $0x1,%1;"
+//          "addq %1,%0;"
+//          "cmpq $0x40,%3;"
+//          "loop s;"
+//          :"=a"(s)
+//          :"c"(i),"r"(x),"r"(temp)
+//          :
           );
           */
   return s;
