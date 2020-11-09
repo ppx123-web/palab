@@ -28,7 +28,7 @@ int asm_popcnt(uint64_t x) {
         "jne L;"
         :"=a"(s)
         :"a"(s), "D"(x)
-        :
+        :"rdx"
           );
 
   return s;
