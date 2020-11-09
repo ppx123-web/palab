@@ -34,19 +34,21 @@ int asm_popcnt(uint64_t x) {
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
   //return memcpy(dest, src, n);
-  void* temp = dest;
   asm(
+      "movq %%rdi,%%rax;"
+      "movq %%rdx,%%rsi;"
       "movq $0,%%rcx;"
     "L1:\n"
-      "movb (%%rdi),%%(rsi);"
-      "addq $1,%%rdi;"
+      "movb (%%rax),%%(rsi);"
+      "addq $1,%%rax;"
       "addq $1,%%rsi;"
       "addq $1,%%rcx;"
-      "cmp %%rdx,%%rcx;"
+      "cmp %%rbx,%%rcx;"
       "jne L1;"
-      :"=S"(temp),"=D"(src)
-      :"D"(src),"d"(n)
-      :"rcx"
+      "movq %%rdi,%%rax;"
+      :"=a"(dest)
+      :"D"(src),"d"(dest),"b"(n)
+      :"rcx","rax","rsi"
   );
   return dest;
 }
