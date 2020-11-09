@@ -39,8 +39,8 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
       "movq %%rdi,%%rsi;" //dest = rdx = rsi
       "movq $0,%%rcx;"
     "L1:\n"
-      "movb (%%eax),%%dl;"
-      "movb %%dl,(%%esi);"
+      "movb (%%rax),%%dl;"
+      "movb %%dl,(%%rsi);"
       "addq $1,%%rax;"
       "addq $1,%%rsi;"
       "addq $1,%%rcx;"
