@@ -17,7 +17,7 @@ int asm_popcnt(uint64_t x) {
         if ((x >> i) & 1) s++;
     }
   asm(
-      "s:\n"
+      //"s:\n"
         "movq $1 , %%rax;"
 //          "movq %2,%1;"
 //          "shrq %3,%1;"
