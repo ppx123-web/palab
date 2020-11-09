@@ -37,13 +37,13 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
   void* temp = dest;
   asm(
       "movq $0,%%rcx;"
-    "L:\n"
+    "L1:\n"
       "movb (%%rdi),%%(rsi);"
       "addq $1,%%rdi;"
       "addq $1,%%rsi;"
       "addq $1,%%rcx;"
       "cmp %%rdx,%%rcx;"
-      "jne L;"
+      "jne L1;"
       :"=S"(temp),"=D"(src)
       :"D"(src)
       :"rcx"
