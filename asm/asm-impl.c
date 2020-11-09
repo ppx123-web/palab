@@ -27,23 +27,26 @@ int asm_popcnt(uint64_t x) {
         "jne L;"
         :"=a"(s)
         :"a"(s), "D"(x)
-        :"rdx"
+        :"rdx","rcx"
           );
   return s;
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
   //return memcpy(dest, src, n);
-
-  int dwSize = n/4;
-	int byteSize = n%4;
-	asm(
-		"movl %%edi,dest;"
-		"movl %%esi,src;"
-		"movl ecx,dwSize;"
-		"rep movs dword ptr es:[edi],dword ptr ds:[esi];"
-		"movl ecx,byteSize;"
-		"rep movs byte  ptr es:[edi],byte ptr ds:[esi];"
+  void* temp = dest;
+  asm(
+      "movq $0,%%rcx;"
+    "L:\n"
+      "movb (%%rdi),%%(rsi);"
+      "addq $1,%%rdi;"
+      "addq $1,%%rsi;"
+      "addq $1,%%rcx;"
+      "cmp %%rdx,%%rcx;"
+      "jne L;"
+      :"=S"(temp),"=D"(src)
+      :"D"(src)
+      :"rcx"
   );
   return dest;
 }
