@@ -18,8 +18,8 @@ int asm_popcnt(uint64_t x) {
     }
   asm(
       "s:\n"
-          "mov %2,%1;"
-          "divq %3,%1;"
+          "movq %2,%1;"
+          "shr %3,%1;"
           "and $0x1,%1;"
           "add %1,%0;"
           "cmp $0x40,%3;"
