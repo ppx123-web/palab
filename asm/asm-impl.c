@@ -76,19 +76,6 @@ int asm_setjmp(asm_jmp_buf env) {
 
 void asm_longjmp(asm_jmp_buf env, int val) {
     asm(
-        /*"movq %%rsi,%%rax;"
-        "movq 0x10(%%rdi),%%rcx;"
-        "movq 0x18(%%rdi),%%rdx;"
-        "movq 0x30(%%rdi),%%rsp;"
-        "movq 0x38(%%rdi),%%rbp;"
-        "movq 0x40(%%rdi),%%rbx;"
-        "movq 0x8(%%rdi),%%rbx;"
-        "movq 0x20(%%rdi),%%rdi;"
-        "movq 0x28(%%rdi),%%rsi;"
-        "ret;"
-        :
-        :"D"(env),"S"(val)
-        :"rax","rcx","rbx"*/
         "movl %%esi,%%eax;"
         "movq 0x8(%%rdi),%%rbx;"
         "movq 0x10(%%rdi),%%rcx;"
@@ -97,7 +84,6 @@ void asm_longjmp(asm_jmp_buf env, int val) {
         "movq (%%rdi),%%rsi;"
         "movq %%rsi,0x4(%%rbp);"
         "movq 0x28(%%rdi),%%rsi;"
-        "movq 0x38(%%rdi),%%rbx;"
         :
         :"S"(val),"D"(env)
         :"eax","rbx","rcx","rdx"
