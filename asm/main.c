@@ -18,9 +18,9 @@ int main() {
     assert(dst[1] == src[1]);
     assert(dst[2] == src[2]);
     // TODO: add more tests here.
-    asm_longjmp(buf, 123);
+    asm_longjmp(buf, 12123123);
   } else {
-    assert(r == 123);
+    assert(r == 12123123);
     printf("PASSED.\n");
   }
 }

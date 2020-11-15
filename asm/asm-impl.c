@@ -90,8 +90,9 @@ void asm_longjmp(asm_jmp_buf env, int val) {
         "movq 0x8(%%rdi),%%rbx;"
         "movq 0x20(%%rdi),%%rdi;"
         "movq 0x28(%%rdi),%%rsi;"
+        "ret;"
         :
         :"D"(env),"S"(val)
-        :"rax","rcx","rbp","rbx"
+        :"rax","rcx","rbx"
     );
 }
