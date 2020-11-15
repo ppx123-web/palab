@@ -6,7 +6,7 @@
 typedef struct {
     unsigned long long reg[8];
     int val;
-    unsigned long long mask[16];
+    unsigned long mask[16];
 }jmp_buf;
 
 #define asm_jmp_buf jmp_buf
