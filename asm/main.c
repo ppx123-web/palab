@@ -6,7 +6,7 @@ int main() {
   asm_jmp_buf buf;
   char  src[10] = "abc";
   char  dst[10]={0};
-  int r = asm_setjmp(buf);
+  int r=asm_setjmp(buf);
   if (r == 0) {
     assert(asm_add(1234, 5678) == 6912);
     //assert(asm_add(1,2) == 3);
