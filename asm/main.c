@@ -11,7 +11,7 @@ int main() {
     assert(asm_add(1234, 5678) == 6912);
     //assert(asm_add(1,2) == 3);
     //assert(asm_add(12313,123123) == 12313+123123);
-    //assert(asm_popcnt(0x1)==1);
+    assert(asm_popcnt(0x1)==1);
     //assert(asm_popcnt(0x0123456789abcdefULL) == 32);
     asm_memcpy(dst,src,3);
     assert(dst[0] == src[0]);

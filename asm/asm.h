@@ -2,12 +2,12 @@
 #include <stddef.h>
 
 // TODO: replace with your definition
-//#include <setjmp.h> // remove this
-typedef struct {
+#include <setjmp.h> // remove this
+/*typedef struct {
     unsigned long long reg[8];
     int val;
     unsigned long mask[16];
-}jmp_buf;
+}jmp_buf;*/
 
 #define asm_jmp_buf jmp_buf
 

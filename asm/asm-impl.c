@@ -63,6 +63,7 @@ int asm_setjmp(asm_jmp_buf env) {
         "movq %%rdx,0x18(%%rdi);"
         "movq %%rdi,0x20(%%rdi);"
         "movq %%rsi,0x28(%%rdi);"
+        "movq %%rbp,0x30(%%rdi);"
         "movq %%rbp,%%rbx;"
         "add $0x10,%%rbx;"
         "movq %%rbx,0x30(%%rdi);"
