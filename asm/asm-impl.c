@@ -86,7 +86,7 @@ void asm_longjmp(asm_jmp_buf env, int val) {
         "movq 0x30(%%rdi),%%rsp;"
         "movq 0x38(%%rdi),%%rbp;"
         "movq 0x40(%%rdi),%%rbx;"
-        //"pushq %%rbx;"
+        "pushq %%rbx;"
         "movq 0x8(%%rdi),%%rbx;"
         "movq 0x20(%%rdi),%%rdi;"
         "movq 0x28(%%rdi),%%rsi;"
